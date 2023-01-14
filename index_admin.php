@@ -1,4 +1,11 @@
-<?php include 'header.php';?>
+<?php include '_header.php';?>
+
+<title>Portfolio</title>
+</head>
+<body>
+<?php include '_menu.php';?>
+
+
 <?php $conexion = new conexion();# es un objeto de tipo conexion,
       $proyectos= $conexion->consultar("SELECT * FROM `proyectos`"); ?>
 
@@ -29,4 +36,4 @@
         <?php } ?>
     </div>
 </div>
-<?php include 'footer.php'; ?>
+<?php include '_footer.php'; ?>

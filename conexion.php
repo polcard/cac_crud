@@ -4,7 +4,7 @@
     private $usuario ="root";
     private $pass = "";
     private $conexion;#objeto de tipo pdo, de la clase propia de php
-    private $base = "proyecto";
+    private $base = "cac_portfolio";
    
     public function __construct(){
         try{
@@ -24,6 +24,7 @@
         #esto nos da el valor de id insertado
         return $this->conexion->lastInsertId();
     }
+    
     public function consultar($sql){ # select 
         #ejecuta la consulta y nos devuelve la info de la base
         $sentencia = $this->conexion->prepare($sql);
