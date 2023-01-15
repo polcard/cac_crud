@@ -2,7 +2,7 @@
 <?php $conexion = new conexion();
  /*$sql = "SELECT * FROM `proyectos`";
  $datos = $conexion->consultar($sql);*/
- $proyectos= $conexion->consultar("SELECT * FROM `proyectos`");
+ $proyectos= $conexion->consultar("SELECT * FROM `proyectos` WHERE `visibilidad` = 'SI'");
  ?>
 
 <!doctype html>
@@ -42,25 +42,36 @@
             <?php #leemos proyectos 1 por 1
                 foreach($proyectos as $proyecto){ 
                 ?>
+                    
                     <div class="col">
+
                         <div class="card border border-3 shadow w-100">
                             <a>
-                                <img class="card-img-top" width="100" src="imagenes/<?php echo $proyecto['imagen'];?>" alt="">
+                                <img class="card-img-top" width="100" src="images/<?php echo $proyecto['imagen'];?>" alt="">
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title text-dark">
+                                <a href="<?php echo $proyecto['link'];?>" target="_blank" rel="noopener noreferrer">
                                     <?php echo $proyecto['nombre'];?>
+                                </a>
                                 </h5>
                                 <p class="card-text text-dark">
                                     <?php echo $proyecto['descripcion'];?>
                                 </p>
+                                
                             </div>
                         </div>
                     </div>
+
                 <?php 
                  } 
                 ?>
         </div>
+            <?php if(count($proyectos) == 0){?>
+                <div class="text-center mt-5">
+                    <h3>En construcción</h3>
+                </div>
+            <?php }?>
         <hr>
     </div>
 
@@ -94,6 +105,8 @@
             </div>
         </div>
     </div>
+
+    <hr>
     <footer>
         <ul class="nav justify-content-center">
             <li class="nav-item">
